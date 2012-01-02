@@ -1,0 +1,28 @@
+<!doctype html>
+
+<title>Passwords</title>
+
+<style>
+    #passwords { font-family: monospace }
+</style>
+
+<div id="passwords"></div>
+
+<script>
+    ;(function() {
+
+        var createPassword = function() {
+            var chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            var password = ''
+            for (var i = 8; i; i--) {
+                password += chars[Math.round(Math.random() * (chars.length - 1))]
+            }
+            return password
+        }
+
+        var passwords = []
+        for (var i = 500; i; i--) passwords.push(createPassword())
+
+        document.querySelector('#passwords').textContent = passwords.join(' ')
+    })()
+</script>
