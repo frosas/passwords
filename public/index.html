@@ -10,19 +10,24 @@
 
 <script>
     ;(function() {
+        var password = new function() {
+            var chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
+            chars += chars.toUpperCase()
+            chars += '0123456789';
 
-        var createPassword = function() {
-            var chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-            var password = ''
-            for (var i = 8; i; i--) {
-                password += chars[Math.round(Math.random() * (chars.length - 1))]
+            var pickOne = function(array) {
+                return array[Math.round(Math.random() * (chars.length - 1))]
             }
-            return password
+
+            this.create = function() {
+                var password = ''
+                for (var i = 16; i; i--) password += pickOne(chars)
+                return password
+            }
         }
 
         var passwords = []
-        for (var i = 500; i; i--) passwords.push(createPassword())
-
+        for (var i = 500; i; i--) passwords.push(password.create())
         document.querySelector('#passwords').textContent = passwords.join(' ')
     })()
 </script>
