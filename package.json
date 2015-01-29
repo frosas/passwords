@@ -1,0 +1,13 @@
+{
+  "name": "passwords",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.11.1"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
