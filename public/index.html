@@ -3,10 +3,14 @@
 <title>Passwords</title>
 
 <style>
-    #passwords { font-family: monospace }
+    body { margin: 0; padding: 1px; font-size: 16px }
+    .passwords { font-family: monospace }
+    .passwords div { color: #eee; background: #fff; float: left; margin: 1px;
+        padding: 3px }
+    .passwords div::selection { color: #fff; background: #eee }
 </style>
 
-<div id="passwords"></div>
+<div class="passwords"></div>
 
 <script>
     ;(function() {
@@ -25,9 +29,14 @@
                 return password
             }
         }
-
-        var passwords = []
-        for (var i = 500; i; i--) passwords.push(password.create())
-        document.querySelector('#passwords').textContent = passwords.join(' ')
+        
+        var passwordsEl = document.querySelector('.passwords');
+        for (var i = 0; i < 500; i++) {
+            passwordsEl.appendChild((function() {
+                var el = document.createElement('div');
+                el.textContent = ' ' + password.create() + ' ';
+                return el;
+            })());
+        }
     })()
 </script>
