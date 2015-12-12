@@ -10,14 +10,14 @@
 
 <script>
     ;(function() {
+        var pickOne = function(array) {
+            return array[Math.round(Math.random() * (array.length - 1))]
+        }
+        
         var password = new function() {
             var chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
             chars += chars.toUpperCase()
             chars += '0123456789';
-
-            var pickOne = function(array) {
-                return array[Math.round(Math.random() * (chars.length - 1))]
-            }
 
             this.create = function() {
                 var password = ''
