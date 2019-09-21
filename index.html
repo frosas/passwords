@@ -1,45 +1,46 @@
 <!doctype html>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Passwords</title>
-
-<style>
-    body { margin: 0; padding: 1px; font-size: 16px }
-    .passwords { font-family: monospace }
-    .passwords div { color: #eee; background: #fff; float: left; margin: 1px;
-        padding: 3px }
-    .passwords div::selection { color: #fff; background: #eee }
-</style>
-
-<div class="passwords"></div>
-
-<script>
-    ;(function() {
-        var pickOne = function(array) {
-            return array[Math.round(Math.random() * (array.length - 1))]
-        }
-        
-        var password = new function() {
-            var chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
-            chars += chars.toUpperCase()
-            chars += '0123456789';
-
-            this.create = function() {
-                var password = ''
-                for (var i = 16; i; i--) password += pickOne(chars)
-                return password
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwords</title>
+    <style>
+        body { margin: 0; padding: 1px; font-size: 16px }
+        .passwords { font-family: monospace }
+        .passwords div { color: #eee; background: #fff; float: left; margin: 1px;
+            padding: 3px }
+        .passwords div::selection { color: #fff; background: #eee }
+    </style>    
+</head>
+<body>
+    <div class="passwords"></div>
+    
+    <script>
+        ;(function() {
+            var pickOne = function(array) {
+                return array[Math.round(Math.random() * (array.length - 1))]
             }
-        }
-        
-        var passwordsEl = document.querySelector('.passwords');
-        for (var i = 0; i < 500; i++) {
-            passwordsEl.appendChild((function() {
-                var el = document.createElement('div');
-                el.textContent = ' ' + password.create() + ' ';
-                return el;
-            })());
-        }
-    })()
-</script>
+            
+            var password = new function() {
+                var chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
+                chars += chars.toUpperCase()
+                chars += '0123456789';
+
+                this.create = function() {
+                    var password = ''
+                    for (var i = 16; i; i--) password += pickOne(chars)
+                    return password
+                }
+            }
+            
+            var passwordsEl = document.querySelector('.passwords');
+            for (var i = 0; i < 500; i++) {
+                passwordsEl.appendChild((function() {
+                    var el = document.createElement('div');
+                    el.textContent = ' ' + password.create() + ' ';
+                    return el;
+                })());
+            }
+        })()
+    </script>
+
+</body>
