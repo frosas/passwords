@@ -1,3 +1,8 @@
+:root {
+  --password-color: #ddd;
+  --password-background-color: #fff;
+}
+
 body { 
   margin: 0;
   padding: 1px;
@@ -11,13 +16,13 @@ body {
 
 .passwords__password {
   font-family: monospace;
-  color: #eee; 
-  background: #fff; 
+  color: var(--password-color);
+  background: var(var(--password-background-color));
   margin: 1px;
   padding: 3px;
 }
 
 .passwords__password::selection { 
-  color: #fff; 
-  background: #eee;
+  color: var(--password-background-color);
+  background: var(--password-color);
 }
