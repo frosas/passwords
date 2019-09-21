@@ -5,13 +5,14 @@ body {
 }
 
 .passwords { 
-  font-family: monospace;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .passwords__password {
+  font-family: monospace;
   color: #eee; 
   background: #fff; 
-  float: left; 
   margin: 1px;
   padding: 3px;
 }
