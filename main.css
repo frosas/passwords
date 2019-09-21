@@ -8,7 +8,7 @@ body {
   font-family: monospace;
 }
 
-.passwords div {
+.passwords__password {
   color: #eee; 
   background: #fff; 
   float: left; 
@@ -16,7 +16,7 @@ body {
   padding: 3px;
 }
 
-.passwords div::selection { 
+.passwords__password::selection { 
   color: #fff; 
   background: #eee;
 }

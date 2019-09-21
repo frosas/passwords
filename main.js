@@ -19,6 +19,7 @@ for (var i = 0; i < 500; i++) {
   passwordsEl.appendChild((function() {
     var el = document.createElement('div');
     el.textContent = ' ' + password.create() + ' ';
+    el.classList.add('passwords__password');
     return el;
   })());
 };
