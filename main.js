@@ -1,25 +1,18 @@
-var pickOne = function(array) {
-  return array[Math.round(Math.random() * (array.length - 1))]
-};
+const AVAILABLE_CHARS = (() => {
+  const lowerCaseChars = 'abcdefghijklmnopqrstuvwxyz';
+  return lowerCaseChars + lowerCaseChars.toUpperCase() + '0123456789';
+})();
 
-var password = new function() {
-  var chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
-  chars += chars.toUpperCase()
-  chars += '0123456789';
+const pickOne = array => array[Math.round(Math.random() * (array.length - 1))];
 
-  this.create = function() {
-    var password = ''
-    for (var i = 16; i; i--) password += pickOne(chars)
-    return password
-  }
-};
+const createPassword = () => [...Array(16)].map(() => pickOne(AVAILABLE_CHARS)).join('');
 
 var passwordsEl = document.querySelector('.passwords');
-for (var i = 0; i < 500; i++) {
-  passwordsEl.appendChild((function() {
-    var el = document.createElement('div');
-    el.textContent = ' ' + password.create() + ' ';
-    el.classList.add('passwords__password');
-    return el;
-  })());
-};
+[...Array(500)].forEach(() => {
+  passwordsEl.appendChild(
+    Object.assign(document.createElement('div'), {
+      textContent: createPassword(),
+      className: 'passwords__password'
+    })
+  )
+});
